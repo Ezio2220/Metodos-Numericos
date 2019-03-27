@@ -26,7 +26,7 @@ function calcular(){
     }
     Pn=ax;
     tab=document.getElementById("contenido");
-    tab.innerHTML= "<tr> <th scope='row'>"+n+"</th>"+
+    tab.innerHTML+= "<tr> <th scope='row'>"+n+"</th>"+
     "<td>"+an+"</td><td>"+bn+"</td>"+
     "<td>"+Pn+"</td><td>"+fp+"</td>"+
     "<td>"+Er+"</td></tr>";
