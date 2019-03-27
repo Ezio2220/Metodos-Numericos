@@ -15,6 +15,7 @@ function calcular(){
     f=document.getElementById("fn").value;
     tol=parseFloat(Math.pow(10,-document.getElementById("tol").value));
     criterio = document.getElementById("crit").value;
+    var acum=" ";
     do{
     ax=(parseFloat(an)+parseFloat(bn))/2;
     f=f.replace("x",ax);
@@ -25,11 +26,15 @@ function calcular(){
         Er=(parseFloat(ax)-parseFloat(Pn))/parseFloat(ax);
     }
     Pn=ax;
+    
     tab=document.getElementById("contenido");
-    tab.innerHTML+= "<tr> <th scope='row'>"+n+"</th>"+
+    
+    acum+= "<tr> <th scope='row'>"+n+"</th>"+
     "<td>"+an+"</td><td>"+bn+"</td>"+
     "<td>"+Pn+"</td><td>"+fp+"</td>"+
     "<td>"+Er+"</td></tr>";
+    
+    
     if(fp>0){
         bn=Pn;
     }else{
@@ -37,5 +42,5 @@ function calcular(){
     }
     n++;
     }while(n==3);
-
+    tab.innerHTML=acum;
 }
