@@ -31,16 +31,21 @@ function calcular(){
     
     acum+= "<tr> <th scope='row'>"+n+"</th>"+
     "<td>"+an+"</td><td>"+bn+"</td>"+
-    "<td>"+Pn+"</td><td>"+fp+"</td>"+
+    "<td>"+ax+"</td><td>"+fp+"</td>"+
     "<td>"+Er+"</td></tr>";
     
     
     if(fp>0){
-        bn=Pn;
+        bn=ax;
     }else{
-        an=Pn
+        an=ax;
     }
+     alert(n);
+    if(n==1){
+        Er=999;
+    }    
     n++;
     }while(n==3);
+    
     tab.innerHTML=acum;
 }
