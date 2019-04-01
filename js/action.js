@@ -184,6 +184,13 @@ function gx(f){
                 g4=g4.replace('[+','[-');
             }
         }
+        while(g.indexOf('[*')>=0){
+            g=g.replace('[*','[');
+            g3=g3.replace('[*','[');
+            if(g4!="none"){
+                g4=g4.replace('[*','[');
+            }
+        }
         while(g.indexOf('=+')>=0){
             g=g.replace('=+','=');
             g3=g3.replace('=+','=');
@@ -305,6 +312,9 @@ function gx(f){
         }
         while(g.indexOf('[+')>=0){
             g=g.replace('[+','[-');
+        }
+        while(g.indexOf('[*')>=0){
+            g=g.replace('[*','[');
         }
         while(g.indexOf('=+')>=0){
             g=g.replace('=+','=');
