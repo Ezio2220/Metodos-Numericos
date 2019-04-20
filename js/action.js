@@ -5,7 +5,7 @@ function xf(f){
     f=f+"=0";
     return f;
 }
-function gx(f){
+function gx(f,z){
     var item=1;
     var ad=" ";
     var g;
@@ -332,7 +332,7 @@ function gx(f){
         item++;
     }
     //alert(ad);
-    var option = document.getElementById("G(X)");
+    var option = document.getElementById(z);
     option.innerHTML=ad;
 
 }
@@ -401,6 +401,7 @@ function fn(f,x){
         result = Math.pow(result,(1/3));
         return result;
     }else{
+        //alert(sol);
         result = eval(sol);
         return result;
     }
@@ -475,8 +476,254 @@ function calcular(){
     //document.getElementById("calc").disabled=true;
 
 }
+
 function comprobar(){
     var funcion = document.getElementById("funcion").value;
-    gx(xf(funcion));
+    gx(xf(funcion),"G(X)");
     document.getElementById("calc").disabled=false;
+}
+function comp2(txt){
+
+    var cmp = txt;
+    var complete;
+    var bandera=true;
+    var n=0;
+    var i=0;
+    var tm = cmp;
+    complete = "";
+    while(bandera){
+        n =cmp.indexOf("X",n);
+       // alert(i);
+        if(n== undefined || n<i){
+            complete+= tm;
+            bandera=false;
+        }else if(n>=0){
+            //alert(n);
+            tm=tm.replace("X","*X");
+            n+=2;
+            i=n;
+            complete+=tm.substring(0,n);
+            tm = tm.substring(i);
+            
+        }
+        
+    }
+    cmp = complete;
+    
+    bandera = true;
+   //    alert(cmp);
+    
+    while(bandera){
+        if(cmp.indexOf("*") == 0 ){
+
+            complete = "1"+cmp;
+     //       alert(complete);
+        }
+        else if(cmp.indexOf("-*") >0){
+            var ant  = cmp.substring(0,cmp.indexOf('-*')+1);
+            var nxt = cmp.substring(cmp.indexOf('-*')+1);
+            //alert(ant+":"+nxt);
+            complete = ant+"1"+nxt;
+
+        }else if(cmp.indexOf("+*") >0 ){
+            var ant  = cmp.substring(0,cmp.indexOf('+*')+1);
+            var nxt = cmp.substring(cmp.indexOf('+*')+1);
+          // alert(ant+":"+nxt);
+            complete = ant+"1"+nxt;
+        }else{
+            bandera = false;
+        }
+        cmp = complete;
+    }
+    return complete;
+
+}
+
+function calcular2(){
+    var x1 = document.getElementById("x1b").value;
+    var tex = document.getElementById("fn").value;
+    var tex2 = document.getElementById("fder").value;
+    tex = comp2(tex);
+    tex2 = comp2(tex2);
+    //alert(fn(tex,1.5));
+    var contenido = document.getElementById("contenido2");
+    var x = x1;
+    var ax1=0.0;
+    var ax2=0.0;
+    var res= x1;
+    var add=" ";
+    var contador = 2;
+    add+="<tr> <th scope='row'>1</th> <td>"+res+"</td></tr>";
+    var ant;
+    do{
+        
+        ant=x;
+        x=res;
+        ax1=fn(tex,x);
+        ax2=fn(tex2,x);
+        res=(x-(ax1/ax2));
+        //alert(res);
+        if(res==Infinity||res==-Infinity || res==NaN || isNaN(res)){
+            break;
+        }
+        if(x==res){
+        }else{
+            add+="<tr> <th scope='row'>"+contador+"</th> <td>"+res+"</td></tr>";
+        }
+
+        contador++;
+        if(res==ant && contador > 4){
+            res=NaN;break;
+        }
+    }while(x!=res);
+    
+    contenido.innerHTML=add;
+    if(res==Infinity||res==-Infinity || res==NaN || isNaN(res)){
+        alert("ERROR la funcion g(x) con x1="+x1+" NO TIENE SOLUCION");
+    }else{
+        alert("La RAIZ es: "+res);
+    }
+}
+
+function calcular3(){
+    var x0 = document.getElementById("x0").value;
+    var x1 = document.getElementById("x1c").value;
+    var tex = document.getElementById("fn2").value;
+    tex = comp2(tex);
+
+    var contenido = document.getElementById("contenido3");
+    var x = x1;
+    var ax1=0.0;
+    var ax2=0.0;
+    var res= x1;
+    var add=" ";
+    var contador = 2;
+    add+="<tr> <th scope='row'>0</th> <td>"+x0+"</td></tr>";
+    add+="<tr> <th scope='row'>1</th> <td>"+res+"</td></tr>";
+    var ant;
+    do{
+        
+        ant=x;
+        x=res;
+        ax1=fn(tex,x)*(x-x0);
+        ax2=fn(tex,x)-fn(tex,x0);
+        res=(x-(ax1/ax2));
+        //alert(res);
+        if(res==Infinity||res==-Infinity || res==NaN || isNaN(res)){
+            break;
+        }
+        if(x==res){
+        }else{
+            add+="<tr> <th scope='row'>"+contador+"</th> <td>"+res+"</td></tr>";
+        }
+
+        contador++;
+        if(res==ant && contador > 4){
+            res=NaN;break;
+        }
+        x0=x;
+    }while(x!=res);
+    
+    contenido.innerHTML=add;
+    if(res==Infinity||res==-Infinity || res==NaN || isNaN(res)){
+        alert("ERROR la funcion g(x) con x1="+x1+" NO TIENE SOLUCION");
+    }else{
+        alert("La RAIZ es: "+res);
+    }
+}
+
+function calcular4(){
+    var dc = 1;
+
+    var xl = document.getElementById("xl").value;
+    var xu = document.getElementById("xu").value;
+    var tex = document.getElementById("fn3").value;
+    tex = comp2(tex);
+    var contenido = document.getElementById("contenido4");
+    var add=" ";
+
+    var fxl = fn(tex,xl);
+    alert(fxl);
+    var fxu = fn(tex,xu);
+    alert(fxu);
+    var x;
+    var res =xu-( (fxu*(xl-xu))/(fxl-fxu) );
+    alert(res);
+    var fx=fn(tex,res);
+    var mf;
+    var cmf=9999.99;
+    var contador = 2;
+    
+    if(dc==1){
+        mf=(fxl*fx);
+    }else{
+        mf=(fxu*fx);
+    }  
+
+    add+="<tr> <th scope='row'>1</th><td>"+xl+"</td><td>"+xu+"</td><td>"+fxl+"</td><td>"+fxu+"</td><td>"+res+"</td><td>"+fx+"</td><td>"+mf+"</td><td>0</td></tr>";
+    var ant;
+    x=res;
+    do{
+
+        ant=x;
+        x=res;
+        if(dc==1){
+            if(mf>0){
+                xl=x;
+            }else if(mf<0){
+                xu=x;
+            }else{
+                alert("LA RAIZ ES: "+x);
+            }
+        }else{
+            if(mf>0){
+                xu=x;
+            }else if(mf<0){
+                xl=x;
+            }else{
+                alert("LA RAIZ ES: "+x);
+                break;
+            }
+        }
+        
+        fxl = fn(tex,xl);
+        fxu = fn(tex,xu);
+        res=xu-( (fxu*(xl-xu))/(fxl-fxu) );
+        fx=fn(tex,res);
+
+        if(dc==1){
+            mf=(fxl*fx);
+        }else{
+            mf=(fxu*fx);
+        }
+        cmf=Math.abs(res-x);
+        
+        if(x==res){
+        
+        }else{
+            add+="<tr> <th scope='row'>"+contador+"</th><td>"+xl+"</td><td>"+xu+"</td><td>"+fxl+"</td><td>"+fxu+"</td><td>"+res+"</td><td>"+fx+"</td><td>"+mf+"</td><td>"+cmf+"</td></tr>";
+        }
+        contador++;
+        if(res==ant && contador > 4){
+            res=NaN;break;
+        }
+
+    }while(x!=res);
+    
+    contenido.innerHTML=add;
+    if(res==Infinity||res==-Infinity || res==NaN || isNaN(res)){
+        alert("ERROR la funcion f(x) con NO TIENE SOLUCION");
+    }else{
+        alert("La RAIZ es: "+res);
+    }
+}
+
+function comprobar2(){
+    var funcion = document.getElementById("fn4").value;
+    gx(xf(funcion),"G(X)2");
+    document.getElementById("calc2").disabled=false;
+}
+
+function calcular5(){
+    var funcion = getRadioVal( document.getElementById('G(X)2'), "Options" );
 }

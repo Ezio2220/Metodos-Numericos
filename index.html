@@ -51,10 +51,11 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="#hello" class="smoothscroll">INICIO</a></li>
           <li><a href="#green" class="smoothscroll">Punto Fijo</a></li>
-          <!--
-          <li><a href="#portfolio" class="smoothscroll">Portfolio</a></li>
-          <li><a href="#contact" class="smoothscroll">Contact</a></li>
-          -->
+          <li><a href="#skills" class="smoothscroll">Newton Raphson</a></li>
+          <li><a href="#portfolio" class="smoothscroll">Secante</a></li>
+          <li><a href="#green2" class="smoothscroll">Posicion falsa</a></li>
+          <li><a href="#skills2" class="smoothscroll">Δ² de Aitken</a></li>
+        
         </ul>
       </div>
       <!--/.nav-collapse -->
@@ -130,9 +131,111 @@
     </div>
   </div>
   <!--FUTUROS AGREGADOS by:CF17002-->
-  <!--
+  <div id="skills">
+    <div class="container">
+      <div class="row centered">
+        <h2>Metodo de Newton Raphson</h2>
+        <h4 style="display: inline-block;">ƒ(x)=</h4><input data-msg="por favor introduzca una funcion valida" style="width:40%;display: inline-block;" type="text" class="form-control" id="fn"  placeholder="Escriba aqui su funcion">
+        <h4 style="display: inline-block;">ƒ'(x)=</h4><input data-msg="por favor introduzca una funcion valida" style="width:40%;display: inline-block;" type="text" class="form-control" id="fder"  placeholder="Escriba aqui la derivada">
+        <br><br>
+        <div class="row">
+          <div style="text-align: right;" class="col-md-4" >
+              <h4 style="display: inline-block;">X1=</h4>
+            <input data-msg="por favor ponga una aproximacion inicial" style="width:50%;display: inline-block;" type="number" class="form-control" value=1 id="x1b"  placeholder="escriba su X1">
+          </div>
+          <div class="col-md-8">
+                        
+            <button id="calc" onclick="calcular2()" style=" box-shadow: 1px 1px #888888;border-radius: 10px;"  value="CALCULAR" type="button" class="btn btn-secondary">Calcular</button>
+            
+            <button style=" box-shadow: 1px 1px #888888;border-radius: 10px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                Instrucciones
+            </button>
+          </div>
+
+        </div>
+        <br><br>
+        <center>
+        <table style="width: fit-content" class="table">
+          <thead style="background-color: black;color: white;" >
+            <tr>
+              <th scope="col">N</th>
+              <th scope="col">Xn</th>
+            </tr>
+          </thead>
+          <tbody id="contenido2" style="background-color: #f2f2f2;" >
+            <tr>
+              <th scope="row">1</th>
+              <td>0.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+        <!--
+        <div class="col-lg-3 mt">
+          <canvas id="javascript" height="130" width="130"></canvas>
+          <p>Javascript</p>
+          <br>
+        </div>
+        <div class="col-lg-3 mt">
+          <canvas id="bootstrap" height="130" width="130"></canvas>
+          <p>Bootstrap</p>
+          <br>
+        </div>
+        <div class="col-lg-3 mt">
+          <canvas id="wordpress" height="130" width="130"></canvas>
+          <p>Wordpress</p>
+          <br>
+        </div>
+        <div class="col-lg-3 mt">
+          <canvas id="photoshop" height="130" width="130"></canvas>
+          <p>Photoshop</p>
+          <br>
+        </div> -->
+
+      </div>
+      
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /skills -->
   <div id="portfolio"></div>
   <div class="container">
+      <div class="row centered mt grid">
+        <h2 style="color:black;" >Metodo de la Secante</h2>
+        <h4 style="color: black; display: inline-block;">ƒ(x)=</h4><input data-msg="por favor introduzca una funcion valida" style="width:40%;display: inline-block;" type="text" class="form-control" id="fn2"  placeholder="Escriba aqui su funcion">
+        <h4 style="color: black; display: inline-block;">X<sub>0</sub>=</h4>
+        <input data-msg="por favor ponga una aproximacion inicial" style="width:20%;display: inline-block;" type="number" class="form-control" value=0 id="x0"  placeholder="escriba su X0">
+        <h4 style="color: black; display: inline-block;">X<sub>1</sub>=</h4>
+        <input data-msg="por favor ponga una aproximacion inicial" style="width:20%;display: inline-block;" type="number" class="form-control" value=1 id="x1c"  placeholder="escriba su X1">
+        <br><br>
+        <div class="row">
+          <center>
+              <button id="calc" onclick="calcular3()" style=" box-shadow: 1px 1px #888888;border-radius: 10px;"  value="CALCULAR" type="button" class="btn btn-secondary">Calcular</button>
+            
+              <button style=" box-shadow: 1px 1px #888888;border-radius: 10px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                  Instrucciones
+              </button>
+              <br><br>
+              <table style="width: fit-content" class="table">
+                  <thead style="background-color: black;color: white;" >
+                    <tr>
+                      <th scope="col">N</th>
+                      <th scope="col">Xn</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contenido3" style="background-color: #f2f2f2;" >
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>0.5</td>
+                    </tr>
+                  </tbody>
+                </table>
+          </center>  
+
+        </div>
+      </div>
+    <!--
     <div class="row centered mt grid">
       <h3>OUR LATEST WORK</h3>
       <div class="mt"></div>
@@ -169,40 +272,115 @@
         <p><button type="button" class="btn btn-theme btn-lg">Email Me!</button></p>
       </div>
     </div>
+    -->
+
   </div>
-
-
-  <div id="skills">
-    <div class="container">
-      <div class="row centered">
-        <h3>OUR SKILLS</h3>
-        <div class="col-lg-3 mt">
-          <canvas id="javascript" height="130" width="130"></canvas>
-          <p>Javascript</p>
-          <br>
-        </div>
-        <div class="col-lg-3 mt">
-          <canvas id="bootstrap" height="130" width="130"></canvas>
-          <p>Bootstrap</p>
-          <br>
-        </div>
-        <div class="col-lg-3 mt">
-          <canvas id="wordpress" height="130" width="130"></canvas>
-          <p>Wordpress</p>
-          <br>
-        </div>
-        <div class="col-lg-3 mt">
-          <canvas id="photoshop" height="130" width="130"></canvas>
-          <p>Photoshop</p>
-          <br>
+  <div id="green2">
+      <div class="container">
+        <div class="row">
+          
+          <div class="centered">
+            <h2>Metodo de Posicion falsa</h2>
+  
+            <center>
+                <h4 style="display: inline-block;">ƒ(x)=</h4><input data-msg="por favor introduzca una funcion valida" style="width:40%;display: inline-block;" type="text" class="form-control" id="fn3"  placeholder="Escriba aqui su funcion">
+                <h4 style="display: inline-block;">X<sub>L</sub>=</h4>
+                <input data-msg="por favor ponga una aproximacion inicial" style="width:20%;display: inline-block;" type="number" class="form-control" value=0 id="xl"  placeholder="escriba su X0">
+                <h4 style="display: inline-block;">X<sub>U</sub>=</h4>
+                <input data-msg="por favor ponga una aproximacion inicial" style="width:20%;display: inline-block;" type="number" class="form-control" value=1 id="xu"  placeholder="escriba su X1">
+                <br><br>
+                <div class="row">
+                  <button id="calc" onclick="calcular4()" style=" box-shadow: 1px 1px #888888;border-radius: 10px;"  value="CALCULAR" type="button" class="btn btn-secondary">Calcular</button>
+            
+                  <button style=" box-shadow: 1px 1px #888888;border-radius: 10px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                  Instrucciones
+                  </button>
+                </div>
+              <br><br>
+              <table style="width: fit-content" class="table">
+                <thead style="background-color: black;color: white;" >
+                  <tr>
+                    <th scope="col">N</th>
+                    <th scope="col">X<sub>L</sub></th>
+                    <th scope="col">X <sub>U</sub></th>
+                    <th scope="col">ƒ(xl)</th>
+                    <th scope="col">ƒ(xu)</th>
+                    <th scope="col">X <sub>r</sub></th>
+                    <th scope="col">ƒ(xr)</th>
+                    <th id="lol" scope="col">ƒ(xl)*f(xr)</th>
+                    <th scope="col">|X <sub>act</sub>-X <sub>ant</sub>|</th>
+                  </tr>
+                </thead>
+                <tbody id="contenido4" style="background-color: #f2f2f2;" >
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </center>
+            
+          </div>
         </div>
       </div>
-      FIN DE LOS AGREGADOS-->
-      <!-- /row -->
     </div>
-    <!-- /container -->
-  </div>
-  <!-- /skills -->
+    <div id="skills2">
+        <div class="container">
+          <div class="row centered">
+            <h2>Δ² de Aitken(EN PROCESO)</h2>
+            <center>
+                <h4 style="display: inline-block;">ƒ(x)=</h4><input data-msg="por favor introduzca una funcion valida" style="width:50%;display: inline-block;" type="text" class="form-control" id="fn4"  placeholder="Escriba aqui su funcion">
+                <button onclick="comprobar2()" style=" box-shadow: 1px 1px #888888;border-radius: 10px;"  value="Comprobar" type="button" class="btn btn-info">Comprobar</button>
+                
+                <button disabled id="calc2" onclick="calcular5()" style=" box-shadow: 1px 1px #888888;border-radius: 10px;"  value="CALCULAR" type="button" class="btn btn-secondary">Calcular</button>
+                
+                <button style=" box-shadow: 1px 1px #888888;border-radius: 10px;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Instrucciones
+                </button>
+                <br><br>
+                <div class="row">
+                  <div style="text-align: right;" class="col-md-4" >
+                      <h4 style="display: inline-block;">X<sub>0</sub>=</h4>
+                    <input data-msg="por favor ponga una aproximacion inicial" style="width:50%;display: inline-block;" type="number" class="form-control" value=1 id="x0b"  placeholder="escriba su X0">
+                  </div>
+                  <div class="col-md-8">
+                    <form id="G(X)2" class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1">
+                      <label style="color:white;" class="form-check-label" for="inlineRadio1">1</label>
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2">
+                      <label style="color:white;" class="form-check-label" for="inlineRadio2">2</label>
+                    </form>
+                  </div>
+    
+                </div>
+                <br><br>
+                <table style="width: fit-content" class="table">
+                  <thead style="background-color: black;color: white;" >
+                    <tr>
+                      <th scope="col">N</th>
+                      <th scope="col">P <sub>N</sub></th>
+                      <th scope="col">P<sup>^</sup> <sub>N</sub></th>
+                    </tr>
+                  </thead>
+                  <tbody id="contenido" style="background-color: #f2f2f2;" >
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>0.5</td>
+                      <td>0.5</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </center>
+          </div>
+        </div>
+      </div>
 
   <section id="contact">
 
